@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property resource="application.yml" />
+	
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/opt/gauge-apps/dashboard/logs/dashboard.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/opt/gauge-apps/dashboard/logs/dashboard.%d{yyyy-MM-dd}.log.gz
+			</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{dd/MM/yy HH:mm} [%thread] level=%-5level logger=%logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="FILE" />
+	</appender>
+	
+    <logger name="org.springframework" level="ERROR" />
+    <logger name="org.springframework.amqp.rabbit" level="INFO" />
+	
+    <root>
+		<appender-ref ref="ASYNC" />
+	</root>
+    
+</configuration>
