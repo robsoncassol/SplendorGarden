@@ -17,9 +17,7 @@ spring:
         driver-class-name: org.hsqldb.jdbc.JDBCDriver
 
 logging.level.root: ERROR
-logging.level.com.gauge: ERROR
-logging.level.com.gauge.dashboard.charts.rankingwords: INFO
-cors.allowed.origins: '*'
+
 
 memcached:
         server: localhost:11211        
@@ -27,7 +25,7 @@ memcached:
       
 ---
 spring:
-    profiles: local
+    profiles: prod
     jpa:
         database: MYSQL
         show-sql: false
@@ -50,81 +48,3 @@ spring:
         
 logging.level.com.gauge: DEBUG 
    
----
-spring:
-    profiles: dev 
-    jpa:
-        database: MYSQL
-        show-sql: false
-        hibernate:
-            ddl-auto: validate
-
-    datasource:
-        url: jdbc:mysql://perceptool-producao-qa.ck9xyggrf2mu.us-east-1.rds.amazonaws.com:3306/perceptool_qa
-        username: gauge
-        password: q1w2e3r4
-        driver-class-name: com.mysql.jdbc.Driver
-        max-active: 10
-        max-idle: 5
-        min-idle: 1
-        test-while-idle: true
-        test-on-borrow: true
-        validation-query: SELECT 1
-        time-between-eviction-runs-millis: 5000
-        min-evictable-idle-time-millis: 60000  
-        
-logging.level.com.gauge: DEBUG   
----
-spring:
-    profiles: qa 
-    jpa:
-        database: MYSQL
-        show-sql: false
-        hibernate:
-            ddl-auto: validate
-
-    datasource:
-        url: jdbc:mysql://perceptool-producao-qa.ck9xyggrf2mu.us-east-1.rds.amazonaws.com:3306/perceptool_producao
-        username: gauge
-        password: q1w2e3r4
-        driver-class-name: com.mysql.jdbc.Driver
-        max-active: 10
-        max-idle: 5
-        min-idle: 1
-        test-while-idle: true
-        test-on-borrow: true
-        validation-query: SELECT 1
-        time-between-eviction-runs-millis: 5000
-        min-evictable-idle-time-millis: 60000  
-        
-logging.level.com.gauge: ERROR
----
-spring:
-    profiles: prod 
-    jpa:
-        database: MYSQL
-        show-sql: false
-        hibernate:
-            ddl-auto: validate
-
-    datasource:
-        url: jdbc:mysql://perceptool-producao.ck9xyggrf2mu.us-east-1.rds.amazonaws.com:3306/perceptool_producao
-        username: G@ug3
-        password: Yh78d2loEx5K1p-394aZk0dB-71wjq$f
-        driver-class-name: com.mysql.jdbc.Driver
-        max-active: 10
-        max-idle: 5
-        min-idle: 1
-        test-while-idle: true
-        test-on-borrow: true
-        validation-query: SELECT 1
-        time-between-eviction-runs-millis: 5000
-        min-evictable-idle-time-millis: 60000  
-        
-logging.level.com.gauge: ERROR
-
-cors.allowed.origins: 'http://www.perceptool.com.br'
-
-memcached:
-        server: perceptool-v1.cyvaao.cfg.use1.cache.amazonaws.com:11211       
-
