@@ -26,14 +26,30 @@ public class CondoTest {
 	}
 
 	@Test
-	public void testSaveCondoAndBuildings() {
+	public void testSaveCascadeCondoAndBuildings() {
 		Condo entity = new Condo("Splendor Garden");
-		entity.addBuilding(new Building("Torre A"));
+		Building buildingA = new Building("Torre A");
+		entity.addBuilding(buildingA);
 		entity.addBuilding(new Building("Torre B"));
 		entity.addBuilding(new Building("Torre C"));
-		Condo saved = repository.save(entity);
+		repository.save(entity);
 		
-		Assert.assertNotNull(saved.getBuildings());
+		Assert.assertNotNull(buildingA.getId());
+	}
+
+	@Test
+	public void testSaveCascadeCondoAndBuildingsAndUnits() {
+		Condo entity = new Condo("Splendor Garden");
+		Building buildingA = new Building("Torre A");
+		Unit unit = new Unit("251");
+		buildingA.addUnit(unit);
+		entity.addBuilding(buildingA);
+		entity.addBuilding(new Building("Torre B"));
+		entity.addBuilding(new Building("Torre C"));
+		repository.save(entity);
+		
+		Assert.assertNotNull(buildingA.getId());
+		Assert.assertNotNull(unit.getId());
 	}
 
 }

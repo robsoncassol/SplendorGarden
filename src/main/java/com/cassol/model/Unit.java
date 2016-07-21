@@ -14,11 +14,19 @@ public class Unit {
 	private Long id;
 	
 	@Column
+	private Long code;
+	
+	@Column
 	private String name;
 
 	public Unit(String name) {
 		super();
 		this.name = name;
+	}
+
+	public Unit(Long code) {
+		super();
+		this.code = code;
 	}
 
 	public Long getId() {

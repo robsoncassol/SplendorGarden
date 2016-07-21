@@ -1,17 +1,17 @@
 package com.cassol.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Building {
+public class User {
 	
 	@Id
 	@GeneratedValue
@@ -20,25 +20,31 @@ public class Building {
 	@Column
 	private String name;
 	
-	@OneToMany
-	@JoinColumn(name="building_unit_id")
-	private List<Unit> units = new ArrayList<>();
 
-	public Building(String name) {
+	@ElementCollection
+	private List<Profile> profiles = new ArrayList<>();
+	
+	
+	enum Profile{
+		SYNDIC,
+		DWELLER,
+		SUPERVISOR,
+		FINANCIAL_MANAGER,
+	}
+
+
+	public User(String name, Profile ...profiles ) {
 		super();
 		this.name = name;
+		this.profiles.addAll(Arrays.asList(profiles));
 	}
-	
+
+
 	public Long getId() {
 		return id;
 	}
 	
-	public Building addUnit(Unit unit){
-		this.units.add(unit);
-		return this;
-	}
-
-
+	
 	
 
 }
