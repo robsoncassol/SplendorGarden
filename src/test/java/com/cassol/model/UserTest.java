@@ -22,7 +22,14 @@ public class UserTest {
 	@Test
 	public void testUserProfilesSave() {
 		User saved = repository.save(new User("Robson", User.Profile.DWELLER));
-		Assert.assertNotNull(saved.getId());
+		
+		User loaded = repository.findOne(saved.getId());
+		
+		Assert.assertNotNull(loaded.getId());
+		Assert.assertNotNull(loaded.getProfiles());
+		
+		
 	}
+	
 
 }

@@ -4,7 +4,23 @@ server:
    port: 8080
 
 spring:
+    jpa:
+        database: HSQL
+        show-sql: true
+        hibernate:
+             ddl-auto: create-drop
+             
+    datasource:
+        url: jdbc:hsqldb:file:mydb;sql.syntax_mys=true;
+        username: sa
+        password: 
+        driver-class-name: org.hsqldb.jdbc.JDBCDriver
 
+logging.level.root: INFO
+
+---
+spring:
+    profiles: local
     jpa:
         database: MYSQL
         show-sql: false
@@ -25,5 +41,5 @@ spring:
         time-between-eviction-runs-millis: 5000
         min-evictable-idle-time-millis: 60000   
         
-logging.level.com.gauge: DEBUG 
+
    

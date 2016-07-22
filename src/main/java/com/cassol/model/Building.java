@@ -3,6 +3,7 @@ package com.cassol.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class Building {
 	@Column
 	private String name;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="building_unit_id")
 	private List<Unit> units = new ArrayList<>();
 

@@ -9,6 +9,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
@@ -18,9 +19,11 @@ public class User {
 	private Long id;
 	
 	@Column
+	@NotNull
 	private String name;
 	
 
+	@NotNull
 	@ElementCollection
 	private List<Profile> profiles = new ArrayList<>();
 	
@@ -32,9 +35,12 @@ public class User {
 		FINANCIAL_MANAGER,
 	}
 
+	private User(){
+		
+	}
 
 	public User(String name, Profile ...profiles ) {
-		super();
+		this();
 		this.name = name;
 		this.profiles.addAll(Arrays.asList(profiles));
 	}
@@ -43,6 +49,19 @@ public class User {
 	public Long getId() {
 		return id;
 	}
+
+	public List<Profile> getProfiles() {
+		return profiles;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setProfiles(List<Profile> profiles) {
+		this.profiles = profiles;
+	}
+	
 	
 	
 	
