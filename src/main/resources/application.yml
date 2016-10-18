@@ -1,7 +1,7 @@
 #Para executar o projeto use "--spring.profiles.active=local" para selecionar um perfil
 
 server:
-   port: 8080
+   port: 80
 
 spring:
     jpa:
