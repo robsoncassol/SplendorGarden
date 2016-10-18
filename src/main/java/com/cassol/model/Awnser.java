@@ -3,6 +3,7 @@ package com.cassol.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Awnser {
@@ -13,7 +14,9 @@ public class Awnser {
 	
 	private String message;
 
-	private Integer rating;
+	@ManyToOne
+	private User user;
+	
 
 	public Long getId() {
 		return id;
@@ -23,9 +26,6 @@ public class Awnser {
 		return message;
 	}
 
-	public Integer getRating() {
-		return rating;
-	}
 	
 	
 	

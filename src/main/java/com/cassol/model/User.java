@@ -8,7 +8,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -25,9 +25,10 @@ public class User {
 	@ElementCollection
 	private List<Profile> profiles = new ArrayList<>();
 
-	@OneToOne
+	@ManyToOne
 	private Unit unit;
 	
+	private boolean owner = false;
 	
 	enum Profile{
 		SYNDIC,
@@ -67,6 +68,9 @@ public class User {
 		return unit;
 	}
 	
+	public boolean isOwner() {
+		return owner;
+	}
 	
 
 }

@@ -1,10 +1,11 @@
 package com.cassol.model;
 
-import javax.persistence.Column;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Unit {
@@ -14,14 +15,13 @@ public class Unit {
 	@GeneratedValue
 	private Long id;
 	
-	@Column
 	private Long code;
 	
-	@Column
 	private String name;
 	
-	@OneToOne
-	private User owner;
+	@OneToMany
+	private List<User> residents;
+	
 
 	public Unit(String name) {
 		super();
@@ -37,7 +37,13 @@ public class Unit {
 		return id;
 	}
 	
+	public Long getCode() {
+		return code;
+	}
 	
+	public String getName() {
+		return name;
+	}
 	
 
 }

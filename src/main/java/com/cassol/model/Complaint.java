@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Complaint {
@@ -14,10 +16,12 @@ public class Complaint {
 	@GeneratedValue
 	private Long id;
 	
+	@ManyToOne
 	private User complainer;
 	
 	private String message;
 	
+	@OneToMany
 	private List<Awnser> awnsers = new ArrayList<>();
 
 	public Long getId() {
