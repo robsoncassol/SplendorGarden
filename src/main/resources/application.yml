@@ -18,28 +18,7 @@ spring:
 
 logging.level.root: INFO
 
----
-spring:
-    profiles: local
-    jpa:
-        database: MYSQL
-        show-sql: false
-        hibernate:
-            ddl-auto: update
 
-    datasource:
-        url: jdbc:mysql://perceptool-producao-qa.ck9xyggrf2mu.us-east-1.rds.amazonaws.com:3306/test_a
-        username: gauge
-        password: q1w2e3r4
-        driver-class-name: com.mysql.jdbc.Driver
-        max-active: 10
-        max-idle: 5
-        min-idle: 1
-        test-while-idle: true
-        test-on-borrow: true
-        validation-query: SELECT 1
-        time-between-eviction-runs-millis: 5000
-        min-evictable-idle-time-millis: 60000   
         
 
    
