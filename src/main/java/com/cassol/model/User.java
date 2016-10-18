@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -18,14 +18,15 @@ public class User {
 	@GeneratedValue
 	private Long id;
 	
-	@Column
 	@NotNull
 	private String name;
 	
-
 	@NotNull
 	@ElementCollection
 	private List<Profile> profiles = new ArrayList<>();
+
+	@OneToOne
+	private Unit unit;
 	
 	
 	enum Profile{
@@ -36,8 +37,8 @@ public class User {
 	}
 
 	private User(){
-		
 	}
+	
 
 	public User(String name, Profile ...profiles ) {
 		this();
@@ -62,7 +63,9 @@ public class User {
 		this.profiles = profiles;
 	}
 	
-	
+	public Unit getUnit() {
+		return unit;
+	}
 	
 	
 

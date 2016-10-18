@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Unit {
@@ -18,6 +19,9 @@ public class Unit {
 	
 	@Column
 	private String name;
+	
+	@OneToOne
+	private User owner;
 
 	public Unit(String name) {
 		super();
